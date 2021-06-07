@@ -1,7 +1,25 @@
-import ApproversList from "./approversList";
+import ApproversList from "./ApproversList";
+
+const getApprovedList = (approvers) => {
+  // console.log(approvers);
+  return approvers.filter((approver) => {
+    return approver.status === "accepted";
+  });
+};
+
+const getPendingList = (approvers) => {
+  return approvers.filter((approver) => {
+    if (approver.status !== "accpeted") {
+      console.log(approver.status);
+      console.log(approver.status.indexOf("accepted"));
+    }
+    return approver.status.indexOf("accepted") === -1;
+  });
+};
 
 function RequestApproval({ request }) {
   console.log(request);
+
   return (
     <div className="request-container">
       <div className="request-header">
@@ -85,8 +103,15 @@ function RequestApproval({ request }) {
           <button className="approve-btn">Approve</button>
           <button className="deny-btn">Deny</button>
         </div>
-        <div className="approvers-list">
-          <ApproversList approvers={request.approvers} />
+        <div className="approver-container">
+          <ApproversList
+            approvers={getApprovedList(request.approvers)}
+            type="approved"
+          />
+          <ApproversList
+            approvers={getPendingList(request.approvers)}
+            type="pending"
+          />
         </div>
       </div>
     </div>
