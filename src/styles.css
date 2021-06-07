@@ -1,4 +1,104 @@
+body {
+  background: #f2f2f2;
+  font-size: 14px;
+  color: #222222;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 .App {
-  font-family: sans-serif;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.request-container {
+  background: #ffffff;
+  border-radius: 8px;
+  width: 70%;
+}
+
+.request-container > .request-header {
+  border-bottom: 1px solid #2222220d;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.request-header > .header-title {
+  margin-left: 4px;
+}
+
+.request-container > .request-body {
+  display: flex;
+}
+.request-data {
+  flex: 60%;
+  border-right: 1px solid rgba(34, 34, 34, 0.05);
+}
+
+.request-data > .request-table {
+  box-shadow: 0px 2px 4px rgba(34, 34, 34, 0.05);
+  border: 1px solid rgba(34, 34, 34, 0.05);
+  border-radius: 8px;
+  margin: 16px;
+}
+.table-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.05);
+  padding: 8px;
+}
+.table-row > .row-header {
+  flex: 30%;
+  font-size: 14px;
+  line-height: 16px;
+  color: rgba(34, 34, 34);
+  opacity: 0.5;
+}
+.table-row > .row-description {
+  flex: 70%;
+  font-size: 14px;
+  line-height: 16px;
+  margin-left: 4px;
+}
+
+.approvers-list {
+  flex: 40%;
+}
+
+.approve-btn {
+  background: #26c281;
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  padding: 8px;
+  margin-left: 16px;
+}
+
+.deny-btn {
+  background: #ff6448;
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  padding: 8px;
+  margin: 8px;
+}
+
+.approvers-list {
+  padding: 16px;
+}
+
+.approved-list {
+  display: flex;
+  align-items: center;
 }
