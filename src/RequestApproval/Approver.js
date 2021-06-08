@@ -4,10 +4,10 @@ import {
   faCircle,
   faCircleNotch
 } from "@fortawesome/free-solid-svg-icons";
+
 import Moment from "moment";
 
 function Approver({ approver, type }) {
-  console.log(type);
   return (
     <div>
       <div className="details">

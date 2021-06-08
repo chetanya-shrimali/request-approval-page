@@ -1,21 +1,14 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+
 import "./styles.css";
 import data from "./request";
 import RequestApproval from "./RequestApproval/RequestApproval";
-import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheckCircle,
-  faCircle,
-  faLock,
-  faFileExcel
-} from "@fortawesome/free-solid-svg-icons";
-
 import airbase from "./assets/airbase-logo.svg";
 
 export default function App() {
-  console.log(data);
   return (
-    <div className="App">
+    <div className="app">
       <div className="airbase-logo">
         <img src={airbase} alt="" height="24px" />
       </div>

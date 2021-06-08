@@ -2,31 +2,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheckCircle,
   faCircle,
-  faLock,
   faFileExcel
 } from "@fortawesome/free-solid-svg-icons";
+
 import ApproversList from "./ApproversList";
 
+// assuming accepted are the ones who have accepted the request
 const getApprovedList = (approvers) => {
-  // console.log(approvers);
   return approvers.filter((approver) => {
     return approver.status === "accepted";
   });
 };
 
+// rest all will come in pending
 const getPendingList = (approvers) => {
   return approvers.filter((approver) => {
-    if (approver.status !== "accpeted") {
-      console.log(approver.status);
-      console.log(approver.status.indexOf("accepted"));
-    }
     return approver.status.indexOf("accepted") === -1;
   });
 };
 
 function RequestApproval({ request }) {
-  console.log(request);
-
   return (
     <div className="request-container">
       <div className="request-header">
@@ -35,6 +30,7 @@ function RequestApproval({ request }) {
       </div>
       <div className="request-body">
         <div className="request-data">
+          {/* custom grid */}
           <div className="request-table">
             <div className="table-row">
               <div className="row-header">Requested by</div>
@@ -109,6 +105,7 @@ function RequestApproval({ request }) {
               <div className="row-description">{request.description}</div>
             </div>
           </div>
+          {/* custom grid ends*/}
           <div>
             <div className="danger-text">
               Your company is already paying for {request.service.name} on
