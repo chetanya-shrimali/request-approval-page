@@ -39,7 +39,7 @@ function Approver({ approver, type }) {
           {type === "approved" ? (
             <FontAwesomeIcon icon={faCheckCircle} className="icon-check" />
           ) : (
-            <span class="inner-circle"></span>
+            <span className="inner-circle"></span>
           )}
         </div>
       </div>

@@ -1,3 +1,10 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheckCircle,
+  faCircle,
+  faLock,
+  faFileExcel
+} from "@fortawesome/free-solid-svg-icons";
 import ApproversList from "./ApproversList";
 
 const getApprovedList = (approvers) => {
@@ -23,12 +30,8 @@ function RequestApproval({ request }) {
   return (
     <div className="request-container">
       <div className="request-header">
-        <img
-          src="https://crunchbase-production-res.cloudinary.com/image/upload/c_lpad,h_120,w_120,f_jpg/v1426048404/y4lxnqcngh5dvoaz06as.png"
-          alt="no image"
-          height="32px"
-        />
-        <div className="header-title">{request.service.name}</div>
+        <img src={request.service.logo} alt="" height="32px" />
+        <div className="header-title">Request for {request.service.name}</div>
       </div>
       <div className="request-body">
         <div className="request-data">
@@ -38,7 +41,7 @@ function RequestApproval({ request }) {
               <div className="row-description">
                 <img
                   src={request.requested_by.profile_picture}
-                  alt="no image"
+                  alt=""
                   wid="24px"
                   height="24px"
                 />
@@ -52,56 +55,75 @@ function RequestApproval({ request }) {
               <div className="row-header">Cost</div>
               <div className="row-description">${request.cost}</div>
             </div>
+            {window.innerWidth > 800 ? (
+              <div className="custom-row">
+                <div className="renewal-frequency-container">
+                  <div className="renewal-frequency">Renewal Frequency</div>
+                  <div className="renewal-frequency-value">
+                    {request.renewal_frequency_in_months +
+                      (request.renewal_frequency_in_months === 1
+                        ? " month"
+                        : " months")}
+                  </div>
+                </div>
+                <div className="annual-amount-container">
+                  <div className="annual-amount">Annual Cost</div>
+                  <div className="annual-amount-value">{request.cost * 12}</div>
+                </div>
+              </div>
+            ) : (
+              <>
+                <div className="table-row">
+                  <div className="row-header">Renewal Frequency</div>
+                  <div className="row-description">
+                    {request.renewal_frequency_in_months +
+                      (request.renewal_frequency_in_months === 1
+                        ? " month"
+                        : " months")}
+                  </div>
+                </div>
+                <div className="table-row">
+                  <div className="row-header">Annual Cost</div>
+                  <div className="row-description">{request.cost * 12}</div>
+                </div>
+              </>
+            )}
             <div className="table-row">
               <div className="row-header">Expense Account</div>
               <div className="row-description">{request.expense_account}</div>
             </div>
-            <div className="table-row">
-              <div
-                className="table-row"
-                style={{
-                  flex: "50%",
-                  border: "None",
-                  borderRight: "1px solid black",
-                  padding: "0 8px 0 0"
-                }}
-              >
-                <div className="row-header" style={{ flex: "32%" }}>
-                  Renewal Frequency
-                </div>
-                <div className="row-description" style={{ flex: "68%" }}>
-                  somedata
+            {window.innerWidth > 800 ? (
+              <div className="table-row">
+                <div className="row-header">File</div>
+                <div className="row-description">
+                  {}
+                  <FontAwesomeIcon icon={faFileExcel} className="icon-excel" />
+                  Receipt-{request.service.name}.xls
                 </div>
               </div>
-              <div
-                className="table-row"
-                style={{ flex: "50%", border: "None", padding: "0 8px 0 0" }}
-              >
-                <div className="row-header" style={{ flex: "32%" }}>
-                  Annual Cost
-                </div>
-                <div className="row-description" style={{ flex: "68%" }}>
-                  somedata
-                </div>
-              </div>
-            </div>
-            <div className="table-row">
-              <div className="row-header">File</div>
-              <div className="row-description">
-                {request.files.map((file, index) => (
-                  <div key={index}>
-                    {<img src={file} alt="not available" />}
-                  </div>
-                ))}
-              </div>
-            </div>
+            ) : (
+              " "
+            )}
             <div className="table-row">
               <div className="row-header">Description</div>
               <div className="row-description">{request.description}</div>
             </div>
           </div>
-          <button className="approve-btn">Approve</button>
-          <button className="deny-btn">Deny</button>
+          <div>
+            <div className="danger-text">
+              Your company is already paying for {request.service.name} on
+              recurring basis.
+            </div>
+            <div className="light-text">(1 instance owned by John Smith.)</div>
+          </div>
+          {window.innerWidth > 800 ? (
+            <div className="btn-container">
+              <button className="approve-btn">Approve</button>
+              <button className="deny-btn">Deny</button>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <div className="approver-container">
           <ApproversList
@@ -114,6 +136,15 @@ function RequestApproval({ request }) {
           />
         </div>
       </div>
+
+      {window.innerWidth <= 800 ? (
+        <div className="btn-container">
+          <button className="approve-btn">Approve</button>
+          <button className="deny-btn">Deny</button>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

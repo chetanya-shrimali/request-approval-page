@@ -6,17 +6,35 @@ body {
 }
 
 .App {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
+}
+
+.airbase-logo {
+  text-align: left;
+  width: 68%;
+  margin-bottom: 16px;
+}
+
+.security-text {
+  text-align: left;
+  width: 68%;
+  margin-bottom: 16px;
+}
+
+.warning-text {
+  color: rgba(255, 160, 61, 1);
+  margin-right: 4px;
+  /* opacity: 1; */
 }
 
 .request-container {
   background: #ffffff;
   border-radius: 8px;
-  width: 60%;
+  width: 68%;
 }
 
 .request-container > .request-header {
@@ -35,22 +53,24 @@ body {
 .request-container > .request-body {
   display: flex;
 }
+
 .request-data {
   flex: 60%;
   border-right: 1px solid rgba(34, 34, 34, 0.05);
+  padding: 16px;
 }
 
 .request-data > .request-table {
   box-shadow: 0px 2px 4px rgba(34, 34, 34, 0.05);
   border: 1px solid rgba(34, 34, 34, 0.05);
   border-radius: 8px;
-  margin: 16px;
+  margin-bottom: 16px;
 }
 .table-row {
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(34, 34, 34, 0.05);
-  padding: 8px;
+  padding: 12px;
 }
 .table-row > .row-header {
   flex: 30%;
@@ -64,6 +84,49 @@ body {
   font-size: 14px;
   line-height: 16px;
   margin-left: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.row-description > img {
+  margin-right: 8px;
+}
+
+.custom-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.05);
+  padding: 12px;
+}
+
+.renewal-frequency-container {
+  display: flex;
+  flex: 50%;
+  align-items: center;
+  border-right: 1px solid rgba(34, 34, 34, 0.05);
+}
+
+.renewal-frequency {
+  flex: 65%;
+  color: rgba(34, 34, 34, 0.5);
+}
+
+.renewal-frequency-value {
+  flex: 35%;
+}
+
+.annual-amount-container {
+  display: flex;
+  flex: 50%;
+  padding-left: 8px;
+}
+
+.annual-amount {
+  flex: 50%;
+  color: rgba(34, 34, 34, 0.5);
+}
+.annual-amount-value {
+  flex: 50%;
 }
 
 .approve-btn {
@@ -75,7 +138,7 @@ body {
   line-height: 16px;
   color: #ffffff;
   padding: 8px 16px;
-  margin-left: 16px;
+  margin: 2px;
 }
 
 .deny-btn {
@@ -87,7 +150,7 @@ body {
   line-height: 16px;
   color: #ffffff;
   padding: 8px 16px;
-  margin: 8px;
+  margin: 2px;
 }
 
 /* approvers list */
@@ -129,6 +192,15 @@ body {
   margin-right: 8px;
 }
 
+.icon-lock {
+  margin-right: 4px;
+}
+
+.icon-excel {
+  margin-right: 4px;
+  color: rgba(38, 194, 129, 1);
+}
+
 .inner-circle {
   display: inline-block;
   width: 20px;
@@ -140,6 +212,15 @@ body {
   background-color: rgba(0, 0, 0, 0);
 }
 
+.btn-container {
+  margin-top: 8px;
+}
+/* for all */
+.danger-text {
+  font-size: 12px;
+  color: #ff6448;
+  line-height: 16px;
+}
 .light-text {
   font-size: 12px;
   color: rgba(34, 34, 34);
@@ -149,4 +230,78 @@ body {
 
 .bb {
   border-bottom: 1px solid rgba(34, 34, 34, 0.05);
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1100px) {
+  .airbase-logo {
+    width: 80%;
+  }
+
+  .security-text {
+    width: 80%;
+  }
+
+  .request-container {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .App {
+    display: block;
+  }
+
+  .airbase-logo {
+    width: 90%;
+    padding: 16px 0 16px 16px;
+    margin: 0;
+    border-bottom: 1px solid rgba(34, 34, 34, 0.05);
+  }
+
+  .security-text {
+    width: 90%;
+    padding: 16px 0 0 16px;
+  }
+
+  .request-container {
+    background: #f2f2f2;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .request-container > .request-header {
+    /* display: flex; */
+    /* flex-direction: column; */
+    background: #ffffff;
+  }
+
+  .request-container > .request-body {
+    display: flex;
+    flex-direction: column;
+    background: #f2f2f2;
+  }
+
+  .request-data {
+    background: #ffffff;
+  }
+
+  .approver-container {
+    margin-top: 8px;
+    background: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .btn-container {
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+  }
+  .btn-container > button {
+    flex: 50%;
+    margin: 2px;
+  }
+  .deny-btn {
+    margin: 0px;
+  }
 }
